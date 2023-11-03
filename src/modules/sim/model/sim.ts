@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
 const SimChema = new Schema ({
-    s3: Array,
-    c: Array,
+    s3: { type: [String] },
+    c: { type: [String] },
     pt: Number,
     d: Boolean,
     f: String,
@@ -10,7 +10,7 @@ const SimChema = new Schema ({
     d2: Boolean,
     c2: Number,
     t: Number,
-    id: String,
+    idSim: String,
     pn: Number,
     score: Number,
     highlight: String,
@@ -19,7 +19,7 @@ const SimChema = new Schema ({
     categoryText: String,
     categoryUrl: String,
     priceInstallment: String,
-    categoriesText: Array
+    categoriesText: { type: [String] },
 }, {timestamps: true})
 
 const SimModel = mongoose.model('Sim', SimChema);
