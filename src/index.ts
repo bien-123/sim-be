@@ -1,17 +1,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import { AppServer } from 'dth-core';
+import MongoProvider from './includes/mongo';
+import 'reflect-metadata'
 
-const db = require('./db/config');
+import SimController from './modules/sim/simController';
+import MainController from './modules/main.controller';
 
-const app = express();
-const port = 3000;
-
-app.get('/', (req: any, res: any) => {
-  res.send('Hello World!');
-});
-
-db.connect();
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+(async () => {
+  await MongoProvider.connect();
+  const server = new AppServer({ debug: process.env.DEBUG === 'true' });
+  server.imports([
+    MainController,
+    SimController,
+  ]);
+  server.run(<number><unknown>process.env.PORT || 6000)
+})();
