@@ -3,7 +3,7 @@ import mongoose, {Schema} from "mongoose";
 const OrderSchema = new Schema ({
     sim: String,
     phone: String,
-    price: Number,
+    price: String,
     name: String,
     address: String,
     other_option: String,
