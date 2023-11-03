@@ -20,6 +20,7 @@ const SimChema = new Schema ({
     categoryUrl: String,
     priceInstallment: String,
     categoriesText: { type: [String] },
+    status: String,
 }, {timestamps: true})
 
 const SimModel = mongoose.model('Sim', SimChema);

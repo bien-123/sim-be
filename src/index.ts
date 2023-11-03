@@ -5,8 +5,9 @@ import { AppServer } from 'dth-core';
 import MongoProvider from './includes/mongo';
 import 'reflect-metadata'
 
-import SimController from './modules/sim/simController';
 import MainController from './modules/main.controller';
+import SimController from './modules/sim/simController';
+import OrderController from './modules/order/orderController';
 
 (async () => {
   await MongoProvider.connect();
@@ -14,6 +15,7 @@ import MainController from './modules/main.controller';
   server.imports([
     MainController,
     SimController,
+    OrderController
   ]);
   server.run(<number><unknown>process.env.PORT || 6000)
 })();
